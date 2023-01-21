@@ -16,7 +16,7 @@ import moxy.ktx.moxyPresenter
 class UserInfoFragment : MvpAppCompatFragment(), UserInfoView, BackButtonListener {
 
     companion object {
-        private const val ARG_USER = "ARG_USER_ID"
+        private const val ARG_USER = "ARG_USER_LOGIN"
 
         fun newInstance(userLogin: String) =
             UserInfoFragment().apply { arguments = bundleOf(ARG_USER to userLogin) }

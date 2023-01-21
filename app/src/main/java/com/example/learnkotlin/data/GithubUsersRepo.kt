@@ -1,6 +1,8 @@
 package com.example.learnkotlin.data
 
 import com.example.learnkotlin.data.models.GithubUser
+import io.reactivex.rxjava3.core.Single
+import java.util.concurrent.TimeUnit
 
 class GithubUsersRepo {
 
@@ -12,5 +14,10 @@ class GithubUsersRepo {
         GithubUser("user5")
     )
 
-    fun getUsers() = users
+    fun getUsers(): Single<List<GithubUser>> {
+        return Single.just(users).delay(5L, TimeUnit.SECONDS)
+    }
+    fun getUserByLogin(login: String): Single<GithubUser> {
+        return Single.just(users[0]).delay(3L, TimeUnit.SECONDS)
+    }
 }
