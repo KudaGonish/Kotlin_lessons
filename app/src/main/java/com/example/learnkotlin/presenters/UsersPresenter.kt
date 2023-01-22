@@ -11,6 +11,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.SingleObserver
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
+import kotlinx.coroutines.delay
 import moxy.MvpPresenter
 
 class UsersPresenter(
@@ -44,6 +45,7 @@ class UsersPresenter(
                     val users = usersRepo.getUsers().blockingGet()
                     usersListPresenter.users.addAll(users)
                     usersListPresenter.itemClickListener = { itemView ->
+
                         router.navigateTo(AndroidScreens().userInfo(users[0].login))
                     }
                     viewState.updateList()
