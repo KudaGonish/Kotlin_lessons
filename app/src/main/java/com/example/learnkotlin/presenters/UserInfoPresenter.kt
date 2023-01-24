@@ -29,7 +29,7 @@ class UserInfoPresenter(
                     }
 
                     override fun onSuccess(t: GithubUser) {
-                        t.let { viewState.showLogin(it.login) }
+                        t.let { viewState.showLogin(it.login!!) }
                         t.login
                     }
 
