@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.learnkotlin.App
-import com.example.learnkotlin.data.RetrofitGithubUsersRepo
+import com.example.learnkotlin.data.database.RetrofitGithubUsersRepo
 import com.example.learnkotlin.databinding.FragmentUsersBinding
 import com.example.learnkotlin.presenters.UsersPresenter
 import com.example.learnkotlin.ui.AndroidScreens

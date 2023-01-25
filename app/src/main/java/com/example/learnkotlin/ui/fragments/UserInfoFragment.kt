@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.example.learnkotlin.App
-import com.example.learnkotlin.data.GithubUsersRepo
+import com.example.learnkotlin.data.internet.models.GithubUsersRepo
 import com.example.learnkotlin.databinding.FragmentUserInfoBinding
 import com.example.learnkotlin.presenters.UserInfoPresenter
 import com.example.learnkotlin.ui.views.UserInfoView

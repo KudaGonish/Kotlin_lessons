@@ -1,6 +1,5 @@
-package com.example.learnkotlin.data
+package com.example.learnkotlin.data.internet.models
 
-import com.example.learnkotlin.data.models.GithubUser
 import io.reactivex.rxjava3.core.Single
 import java.util.concurrent.TimeUnit
 

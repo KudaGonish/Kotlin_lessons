@@ -1,6 +1,6 @@
 package com.example.learnkotlin.utils
 
-import com.example.learnkotlin.data.IDataSource
+import com.example.learnkotlin.data.internet.IDataSource
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit

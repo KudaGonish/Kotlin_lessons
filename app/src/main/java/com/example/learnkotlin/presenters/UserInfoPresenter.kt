@@ -1,7 +1,7 @@
 package com.example.learnkotlin.presenters
 
-import com.example.learnkotlin.data.GithubUsersRepo
-import com.example.learnkotlin.data.models.GithubUser
+import com.example.learnkotlin.data.internet.models.GithubUsersRepo
+import com.example.learnkotlin.data.internet.models.GithubUser
 import com.example.learnkotlin.ui.views.UserInfoView
 import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
