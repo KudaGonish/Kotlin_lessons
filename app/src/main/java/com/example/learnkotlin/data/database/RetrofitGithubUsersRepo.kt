@@ -5,6 +5,7 @@ import com.example.learnkotlin.data.internet.IDataSource
 import com.example.learnkotlin.data.internet.models.GithubUser
 import com.example.learnkotlin.utils.INetworkStatus
 import com.example.learnkotlin.domen.data.IGithubUserRepository
+import com.example.learnkotlin.domen.data.IUserCache
 import com.example.learnkotlin.domen.data.RoomUserCache
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -13,7 +14,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class RetrofitGithubUsersRepo(
     val api: IDataSource,
     val networkStatus: INetworkStatus,
-    val db: Database,
+    val cache: IUserCache,
     val dbCache: RoomUserCache
 ) : IGithubUserRepository {
 
@@ -22,12 +23,12 @@ class RetrofitGithubUsersRepo(
             api.getUsers()
                 .flatMap { users ->
                     Single.fromCallable {
-                        dbCache.setImage(users, db)
+                        dbCache.setImage(users, cache)
                     }
                 }
         } else {
             Single.fromCallable {
-                db.userDao.getAll().map { roomUser ->
+                cache.userDao.getAll().map { roomUser ->
                     GithubUser(
                         roomUser.id, roomUser.login, roomUser.avatarUrl,
                         roomUser.reposUrl

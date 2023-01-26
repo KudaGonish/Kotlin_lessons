@@ -1,19 +1,19 @@
 package com.example.learnkotlin.presenters
 
-import com.example.learnkotlin.domen.data.IGithubUserRepository
 import com.example.learnkotlin.data.internet.models.GithubUser
 import com.example.learnkotlin.ui.views.IScreens
 import com.example.learnkotlin.ui.views.IUserListPresenter
 import com.example.learnkotlin.ui.views.UserItemView
-import com.example.learnkotlin.ui.views.UserView
 import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.core.Scheduler
 import moxy.MvpPresenter
+import javax.inject.Inject
 
-class UsersPresenter(val uiScheduler: Scheduler, val usersRepo:
-IGithubUserRepository, val router: Router, val screens: IScreens
-) :
-    MvpPresenter<UserView>() {
+class UserPresenter(val uiScheduler: Scheduler) : MvpPresenter<UsersView>() {
+    @Inject
+    lateinit var usersRepo: IGithubUsersRepo
+    @Inject lateinit var router: Router
+    @Inject lateinit var screens: IScreens
     class UsersListPresenter : IUserListPresenter {
         val users = mutableListOf<GithubUser>()
         override var itemClickListener: ((UserItemView) -> Unit)? = null
@@ -23,7 +23,6 @@ IGithubUserRepository, val router: Router, val screens: IScreens
             user.login?.let { view.setLogin(it) }
             user.avatarUrl?.let {view.loadAvatar(it)}
         }
-
     }
     val usersListPresenter = UsersListPresenter()
     override fun onFirstViewAttach() {
@@ -32,7 +31,7 @@ IGithubUserRepository, val router: Router, val screens: IScreens
         loadData()
         usersListPresenter.itemClickListener = { itemView ->
             val user = usersListPresenter.users[itemView.pos]
-            router.navigateTo(screens.user())
+            router.navigateTo(screens.user(user))
         }
     }
     fun loadData() {
@@ -51,3 +50,4 @@ IGithubUserRepository, val router: Router, val screens: IScreens
         return true
     }
 }
+
